@@ -1,0 +1,51 @@
+#include <cs50.h>
+#include <stdio.h>
+
+// points assigned to each letter
+int points[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+
+int compute_score(string word);
+
+int main(void)
+{
+        //get input from both players
+        string word1 = get_string("player 1: ");
+        string word2 = get_string("player 2: ");
+
+        //score both words
+        int score1 = compute_score(word1);
+        int score2 = compute_score(word2);
+       
+       if(score1 > score2)
+           printf("player 1 wins /n");
+           elseif(score1 < score2)
+           printf("player 2 wins /n");
+           else
+           printf("it's a tie");
+}
+int compute_score(string word)
+{
+    int length = strlen(word);
+    word = strlwr(word);
+    char ch;
+    int i , k , h;
+      
+         for(int j=0;j<=length;j++)
+         {
+             ch = word[j];
+             i = ch;
+             i = i - 97;
+
+             if(i>=0 && i<=25)
+             {
+             k = points[i];
+             h = h + k;
+             }
+             else
+             h = h + 0;
+
+         }
+              return(h);     
+
+
+}
